@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from UniversityServiceService WSDL service -->
+
+  <service name="UniversityService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Services"/>
+      <parameter name="wsdlServiceElement" value="UniversityServiceService"/>
+      <parameter name="schemaQualified" value="http://Services"/>
+      <parameter name="wsdlServicePort" value="UniversityService"/>
+      <parameter name="className" value="Services.UniversityService"/>
+      <parameter name="wsdlPortType" value="UniversityService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="changePassword" qname="operNS:changePassword" returnQName="retNS:changePasswordReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:confirmPassword" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getTransactions" qname="operNS:getTransactions" returnQName="retNS:getTransactionsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeStudentInstructor" qname="operNS:removeStudentInstructor" returnQName="retNS:removeStudentInstructorReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:flag" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeInstructorFromCourse" qname="operNS:removeInstructorFromCourse" returnQName="retNS:removeInstructorFromCourseReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:instructorId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="displayAllInstructors" qname="operNS:displayAllInstructors" returnQName="retNS:displayAllInstructorsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="viewPendingChangeRequests" qname="operNS:viewPendingChangeRequests" returnQName="retNS:viewPendingChangeRequestsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:requestType" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getStudentDetails" qname="operNS:getStudentDetails" returnQName="retNS:getStudentDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getLoginDetails" qname="operNS:getLoginDetails" returnQName="retNS:getLoginDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:username" type="tns:string"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="generateSearchQuery" qname="operNS:generateSearchQuery" returnQName="retNS:generateSearchQueryReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseName" type="tns:string"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:deptName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchForClasses" qname="operNS:searchForClasses" returnQName="retNS:searchForClassesReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseName" type="tns:string"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:deptName" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="enrollStudent" qname="operNS:enrollStudent" returnQName="retNS:enrollStudentReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:studentId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getCourseDetails" qname="operNS:getCourseDetails" returnQName="retNS:getCourseDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getInstructorDetails" qname="operNS:getInstructorDetails" returnQName="retNS:getInstructorDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createStudent" qname="operNS:createStudent" returnQName="retNS:createStudentReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:details" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createInstructor" qname="operNS:createInstructor" returnQName="retNS:createInstructorReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:details" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="assignInstructor" qname="operNS:assignInstructor" returnQName="retNS:assignInstructorReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:instructorId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="displayAllStudents" qname="operNS:displayAllStudents" returnQName="retNS:displayAllStudentsReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="displayAllCourses" qname="operNS:displayAllCourses" returnQName="retNS:displayAllCoursesReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="unenrollStudent" qname="operNS:unenrollStudent" returnQName="retNS:unenrollStudentReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:studentId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="editPersonDetails" qname="operNS:editPersonDetails" returnQName="retNS:editPersonDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:details" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="editCourseDetails" qname="operNS:editCourseDetails" returnQName="retNS:editCourseDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:details" type="tns:string"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getCourseListForStudent" qname="operNS:getCourseListForStudent" returnQName="retNS:getCourseListForStudentReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:studentId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:flag" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="replaceIstrucForCourse" qname="operNS:replaceIstrucForCourse" returnQName="retNS:replaceIstrucForCourseReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:instructorId" type="tns:int"/>
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="createCourse" qname="operNS:createCourse" returnQName="retNS:createCourseReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:details" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="removeCourse" qname="operNS:removeCourse" returnQName="retNS:removeCourseReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:courseId" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="makePayment" qname="operNS:makePayment" returnQName="retNS:makePaymentReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:transaction" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="submitChangeRequest" qname="operNS:submitChangeRequest" returnQName="retNS:submitChangeRequestReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:details" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Services" xmlns:retNS="http://Services" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getChargesDue" qname="operNS:getChargesDue" returnQName="retNS:getChargesDueReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://Services" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:personId" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="displayAllInstructors removeStudentInstructor getInstructorDetails getLoginDetails createCourse createStudent getCourseDetails submitChangeRequest createInstructor getStudentDetails removeInstructorFromCourse replaceIstrucForCourse makePayment getTransactions displayAllCourses enrollStudent generateSearchQuery viewPendingChangeRequests getCourseListForStudent assignInstructor searchForClasses editPersonDetails getChargesDue displayAllStudents removeCourse editCourseDetails unenrollStudent changePassword"/>
+
+  </service>
+</deployment>
