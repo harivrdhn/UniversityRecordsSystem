@@ -1,0 +1,3 @@
+It is a University Management System created using AJAX jQuery for front end, JSPs and Webservices for the backend and MySQL as database.
+
+The JSP files are the user interface for the system. Using AJAX jQuery, they send the data to the Webservices. The Webservices handles the data and relates the information to the MySql Database.
